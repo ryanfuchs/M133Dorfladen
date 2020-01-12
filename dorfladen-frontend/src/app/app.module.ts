@@ -7,6 +7,7 @@ import { OverviewComponent } from './page/overview/overview.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ProductService} from "./service/product.service";
 import { ProductDetailsComponent } from './page/product-details/product-details.component';
+import { CartComponent } from './page/cart/cart.component';
 import { MiniShoppingCartComponent } from './component/mini-shopping-cart/mini-shopping-cart.component';
 import {CustomHttpInterceptorService} from "./http-interceptor";
 
@@ -16,6 +17,7 @@ import {CustomHttpInterceptorService} from "./http-interceptor";
     OverviewComponent,
     ProductDetailsComponent,
     MiniShoppingCartComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

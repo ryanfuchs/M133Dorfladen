@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  
+    width: 100%;
+  }
+  
+  .product {
+    width: 200px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+  
+    background-color: lightgray;
+    border-style: solid;
+    border-color: grey;
+  
+    box-shadow: 5px 5px lightgrey;
+  }
+  
+  .image {
+    width: 400px;
+    height: 400px;
+  }
+  
+  .shopping-cart-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
