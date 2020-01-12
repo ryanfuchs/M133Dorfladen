@@ -1,0 +1,19 @@
+<header>
+  <h1>Dorfladen</h1>
+</header>
+
+<div class="shopping-cart-container">
+  <app-mini-shopping-cart></app-mini-shopping-cart>
+</div>
+
+<div class="container">
+  <div *ngFor="let product of products" (click)="productDetails(product?.id)" class="product">
+    <img class="image" [src]="'./assets/products/' + product?.imageName">
+    <div>
+      <p>{{product?.productName}}</p>
+    </div>
+    <div>
+      <p>{{product?.specialOffer}} CHF / <s style="color: red">{{product.normalPrice}} CHF</s></p>
+    </div>
+  </div>
+</div>

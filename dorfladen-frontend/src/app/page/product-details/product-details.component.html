@@ -1,0 +1,18 @@
+<header>
+  <h1>Dorfladen</h1>
+</header>
+
+<div class="shopping-cart-container">
+  <app-mini-shopping-cart></app-mini-shopping-cart>
+</div>
+
+<div class="container">
+  <div class="image">
+    <img *ngIf="product?.imageName" class="image" [src]="'./assets/products/' + product?.imageName">
+  </div>
+  <div>
+    <h2>{{ product?.productName }}</h2>
+    <p>{{ product?.description }}</p>
+    <button type="button" (click)="addToShoppingCart()">Zum Warenkorb hinzufügen</button>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.image {
+  width: 400px;
+  height: 400px;
+}
+
+.shopping-cart-container {
+  display: flex;
+  justify-content: flex-end;
+}
