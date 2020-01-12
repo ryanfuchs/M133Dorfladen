@@ -1,19 +1,33 @@
 <header>
-    <h1>Dorfladen</h1>
-  </header>
-  
-  <div class="shopping-cart-container">
-    <app-mini-shopping-cart></app-mini-shopping-cart>
-  </div>
-  
-  <div class="container">
-    <div class="image">
-      <img *ngIf="product?.imageName" class="image" [src]="'./assets/products/' + product?.imageName">
+  <h1>Dorfladen</h1>
+</header>
+
+<div class="shopping-cart-container">
+  <app-mini-shopping-cart></app-mini-shopping-cart>
+</div>
+
+<div class="grid-container">
+  <div class="produkt">Produkt</div>
+  <div>Einzelpreis</div>
+  <div>Anzahl</div>
+  <div>Total</div>
+  <a *ngFor="let product of products" (click)="productDetails(product?.id)">
+    <div class="produkt">
+      <div>{{product?.productName}}</div>
     </div>
-    <div class="product">
-      <h2>{{ product?.productName }}</h2>
-      <p>{{ product?.description }}</p>
+    <div class="preis">
       <p>{{product?.specialOffer}} CHF / <s style="color: red">{{product.normalPrice}} CHF</s></p>
-      <button type="button" (click)="addToShoppingCart()">Zum Warenkorb hinzufügen</button>
     </div>
-  </div>
+  </a>
+</div>
+
+<!-- <div class="grid-container">
+    <div class="item1">1</div>
+    <div class="item2">2</div>
+    <div class="item3">3</div>  
+    <div class="item4">4</div>
+    <div class="item5">5</div>
+    <div class="item6">6</div>
+    <div class="item7">7</div>
+    <div class="item8">8</div>  
+  </div> -->
