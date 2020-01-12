@@ -10,9 +10,10 @@
   <div class="image">
     <img *ngIf="product?.imageName" class="image" [src]="'./assets/products/' + product?.imageName">
   </div>
-  <div>
+  <div class="product">
     <h2>{{ product?.productName }}</h2>
     <p>{{ product?.description }}</p>
+    <p>{{product?.specialOffer}} CHF / <s style="color: red">{{product.normalPrice}} CHF</s></p>
     <button type="button" (click)="addToShoppingCart()">Zum Warenkorb hinzufügen</button>
   </div>
 </div>
