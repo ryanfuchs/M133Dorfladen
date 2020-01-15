@@ -6,3 +6,8 @@ export class Product {
   imageName: string;
   description: string;
 }
+
+export type CartItem = {
+  product: Product;
+  amount: number;
+}

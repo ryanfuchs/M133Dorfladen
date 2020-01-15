@@ -6,20 +6,40 @@
   <app-mini-shopping-cart></app-mini-shopping-cart>
 </div>
 
-<div class="grid-container">
-  <div class="produkt">Produkt</div>
-  <div>Einzelpreis</div>
-  <div>Anzahl</div>
-  <div>Total</div>
-  <a *ngFor="let product of products" (click)="productDetails(product?.id)">
-    <div class="produkt">
-      <div>{{product?.productName}}</div>
-    </div>
-    <div class="preis">
-      <p>{{product?.specialOffer}} CHF / <s style="color: red">{{product.normalPrice}} CHF</s></p>
-    </div>
-  </a>
-</div>
+<table style="width:100%">
+  <tr>
+    <th>Produkt</th>
+    <th>Einzelpreis</th>
+    <th>Anzahl</th>
+    <th>Total</th>
+  </tr>
+  <tr *ngFor="let cartItem of productCart">
+    <th>{{cartItem?.product.productName}}</th>
+    <th>{{cartItem?.product.specialOffer}} CHF / <s style="color: red">{{cartItem?.product.normalPrice}} CHF</s></th>
+    <th>
+      <button>+</button>
+      {{cartItem?.amount}}
+      <button>-</button>
+    </th>
+    <th>
+      {{cartItem.amount}}
+    </th>
+  </tr>
+</table>
+<!-- <div class="produkt">Produkt</div>
+<div>Einzelpreis</div>
+<div>Anzahl</div>
+<div>Total</div>
+<a *ngFor="let product of products" (click)="productDetails(product?.id)">
+  <div class="produkt">
+    <div>{{product?.productName}}</div>
+  </div>
+  <div class="preis">
+    <p>{{product?.specialOffer}} CHF / <s style="color: red">{{product.normalPrice}} CHF</s></p>
+  </div>
+</a>
+</div> -->
+
 
 <!-- <div class="grid-container">
     <div class="item1">1</div>

@@ -4,7 +4,7 @@ import * as path from "path";
 import * as bodyParser from "body-parser";
 import * as expressSession from "express-session";
 import * as fs from "fs";
-import {Product} from "./types";
+import { Product, CartItem } from "./types";
 
 const app = express();
 app.use(cors({
@@ -22,6 +22,9 @@ app.use(expressSession({
 }));
 
 let products: Array<Product> = new Array<Product>();
+let cartItemToFind: CartItem;
+let productToAdd: Product;
+let newCartArray = <CartItem[]>[];
 
 function loadProducts() {
     products = JSON.parse(fs.readFileSync(path.join(__dirname, '/assets/products/products.json'), 'utf8'));
@@ -41,7 +44,7 @@ app.get("/api/product/:id", (req, res) => {
 /* Shopping Cart Api */
 app.get("/api/shopping-cart", (req, res) => {
     if (req.session.cart == undefined) {
-        req.session.cart = <Product[]>[];
+        req.session.cart = <CartItem[]>[];
     }
 
     res.json(req.session.cart);
@@ -49,12 +52,29 @@ app.get("/api/shopping-cart", (req, res) => {
 
 app.post("/api/shopping-cart", (req, res) => {
     if (req.session.cart == undefined) {
-        req.session.cart = <Product[]>[];
+        req.session.cart = <CartItem[]>[];
     }
-    req.session.cart = <Product[]>[
-        ...req.session.cart,
-        <Product>req.body
-    ];
+
+    productToAdd = <Product>req.body;
+
+    cartItemToFind = req.session.cart.find(item => item.product.id == productToAdd.id);
+    newCartArray = req.session.cart.filter(
+        item => item.product.id != productToAdd.id);
+
+    if (cartItemToFind != undefined) {
+        cartItemToFind.amount += 1;
+        req.session.cart = <CartItem[]>[
+            ...newCartArray, cartItemToFind
+        ];
+    }
+    else {
+        req.session.cart = <CartItem[]>[
+            ...newCartArray,
+            { product: productToAdd, amount: 1 }
+        ];
+    }
+
+
 
     res.sendStatus(200);
 });

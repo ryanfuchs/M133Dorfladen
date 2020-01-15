@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/service/product.service';
-import { Product } from 'src/app/types/product.type';
+import { Product, CartItem } from 'src/app/types/product.type';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,13 +10,17 @@ import { Router } from '@angular/router';
 })
 export class CartComponent implements OnInit {
 
+  public productCart: Array<CartItem> = new Array<CartItem>();
   public products: Array<Product> = new Array<Product>();
 
-  constructor(private productService: ProductService, private router: Router) {}
+  constructor(private productService: ProductService, private router: Router) { }
 
   async ngOnInit() {
-    this.products = await this.productService.getShoppingCart();
+    this.productCart = await this.productService.getShoppingCart();
+    this.productCart.forEach(element => {
+      this.products.push(element.product);
+    });
   }
-  
+
 
 }
