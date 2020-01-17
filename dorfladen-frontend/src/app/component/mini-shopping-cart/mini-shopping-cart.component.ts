@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../service/product.service';
-import {Product} from '../../types/product.type';
+import {Product, CartItem} from '../../types/product.type';
 import {Router} from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class MiniShoppingCartComponent implements OnInit {
 
-  private shoppingCart: Array<Product>;
+  private shoppingCart: Array<CartItem>;
   public priceSum;
 
   constructor(private productService: ProductService,  private router: Router) { }
@@ -30,8 +30,8 @@ export class MiniShoppingCartComponent implements OnInit {
 
   private sumPrice() {
     let sum = 0.00;
-    for (const product of this.shoppingCart) {
-      sum += product.specialOffer;
+    for (const cartItem of this.shoppingCart) {
+      sum += cartItem.product.specialOffer;
     }
     console.log(sum);
     this.priceSum = sum;
