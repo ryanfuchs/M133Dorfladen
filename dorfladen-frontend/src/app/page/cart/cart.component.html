@@ -19,12 +19,24 @@
     <th>
       <button (click)="
       increaseAmount(cartItem?.product.id)">+</button>
-      {{cartItem?.amount}}
       <button (click)="decreaseAmount(cartItem?.product.id)">-</button>
+      {{cartItem?.amount}}
     </th>
     <th>
-      {{cartItem.amount}}
+      {{cartItem.amount * cartItem?.product.specialOffer | number}}
     </th>
   </tr>
+  <tr>
+    <th>
+    </th>
+    <th>
+    </th>
+    <th>
+    </th>
+    <th>
+      {{totalPrice | number}}
+    </th>
+  </tr>
+  <button (click)="checkout()">Check out!</button>
 </table>
 

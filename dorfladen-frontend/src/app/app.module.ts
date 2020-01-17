@@ -10,6 +10,7 @@ import { ProductDetailsComponent } from './page/product-details/product-details.
 import { CartComponent } from './page/cart/cart.component';
 import { MiniShoppingCartComponent } from './component/mini-shopping-cart/mini-shopping-cart.component';
 import {CustomHttpInterceptorService} from "./http-interceptor";
+import { CheckoutComponent } from './page/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {CustomHttpInterceptorService} from "./http-interceptor";
     OverviewComponent,
     ProductDetailsComponent,
     MiniShoppingCartComponent,
-    CartComponent
+    CartComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

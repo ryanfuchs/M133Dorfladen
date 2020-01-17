@@ -31,10 +31,9 @@ export class MiniShoppingCartComponent implements OnInit {
   private sumPrice() {
     let sum = 0.00;
     for (const cartItem of this.shoppingCart) {
-      sum += cartItem.product.specialOffer;
+      sum += cartItem.product.specialOffer * cartItem.amount;
     }
-    console.log(sum);
-    this.priceSum = sum;
+    this.priceSum = sum.toFixed(2);
   }
 
   async openCart(){
