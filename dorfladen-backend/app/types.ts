@@ -1,6 +1,3 @@
-export type Hero = {
-    name: string;
-}
 export type Product = {
     id: number;
     productName: string;

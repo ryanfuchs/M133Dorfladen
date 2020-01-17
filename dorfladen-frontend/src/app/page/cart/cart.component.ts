@@ -24,15 +24,10 @@ export class CartComponent implements OnInit {
       this.products.push(element.product);
       if(element.product.specialOffer.toString() != ""){
         this.totalPrice = this.totalPrice + element.product.specialOffer * element.amount;
-        console.log(element.product.specialOffer);
-        console.log(this.totalPrice);
       }
       else{
         this.totalPrice = this.totalPrice + element.product.normalPrice * element.amount;
-        console.log(this.totalPrice);
       }
-      console.log("here");
-      console.log(this.totalPrice);
       
     });
   }

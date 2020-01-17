@@ -29,13 +29,11 @@ export class ProductService {
   }
 
   async increaseShoppingCartItem(cartItemID): Promise<void>{
-    console.log(cartItemID);
     await this.http.post('http://localhost:8080/api/increase-shopping-cart', cartItemID, { responseType: 'text' }).toPromise();
     this.shoppingCartState$.next();
   }
 
   async decreaseShoppingCartItem(cartItemID): Promise<void>{
-    console.log(cartItemID);
     await this.http.post('http://localhost:8080/api/decrease-shopping-cart', cartItemID, { responseType: 'text' }).toPromise();
     this.shoppingCartState$.next();
   }

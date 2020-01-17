@@ -18,7 +18,6 @@ export class MiniShoppingCartComponent implements OnInit {
   async ngOnInit() {
     this.productService.shoppingCartState$.subscribe(async () => {
       await this.updateCart();
-      console.log('subject updated');
     });
     this.updateCart();
   }

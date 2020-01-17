@@ -29,18 +29,9 @@ export class CheckoutComponent implements OnInit {
 
   async submit() {
     if (this.email == '' || this.nachname == '' || this.email == '' || this.regex.test(this.email)) {
-      console.log(this.email);
-      console.log(this.nachname);
-      console.log(this.vorname);
-
-
       this.invalid = true
     }
     else {
-      console.log(this.email);
-      console.log(this.nachname);
-      console.log(this.vorname);
-
       this.user.vorname = this.vorname;
       this.user.nachname = this.nachname;
       this.user.email = this.email;
@@ -63,8 +54,8 @@ export class CheckoutComponent implements OnInit {
     this.email = ev.target.value;
   }
 
-  openHome(){
+  openHome() {
     this.router.navigate(['/overview']);
-    }
+  }
 
 }

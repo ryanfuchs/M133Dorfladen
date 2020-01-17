@@ -132,7 +132,6 @@ app.post("/api/decrease-shopping-cart", (req, res) => {
 app.post("/api/submit", (req, res) => {
  this.user = <User>req.body;
 
- console.log(this.user);
 
  if(this.user.email != '' && this.user.nachname != '' && this.user.email != ''){
     req.session.cart = <CartItem[]>[];
