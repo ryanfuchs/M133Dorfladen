@@ -7,7 +7,6 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-
   public shoppingCartState$: Subject<void> = new Subject<void>();
 
   constructor(private readonly http: HttpClient) { }
@@ -28,4 +27,18 @@ export class ProductService {
     await this.http.post('http://localhost:8080/api/shopping-cart', product, { responseType: 'text' }).toPromise();
     this.shoppingCartState$.next();
   }
+
+  async increaseShoppingCartItem(cartItemID): Promise<void>{
+    console.log(cartItemID);
+    await this.http.post('http://localhost:8080/api/increase-shopping-cart', cartItemID, { responseType: 'text' }).toPromise();
+    this.shoppingCartState$.next();
+  }
+
+  async decreaseShoppingCartItem(cartItemID): Promise<void>{
+    console.log(cartItemID);
+    await this.http.post('http://localhost:8080/api/decrease-shopping-cart', cartItemID, { responseType: 'text' }).toPromise();
+    this.shoppingCartState$.next();
+  }
 }
+
+

@@ -23,8 +23,9 @@ app.use(expressSession({
 
 let products: Array<Product> = new Array<Product>();
 let cartItemToFind: CartItem;
-let productToAdd: Product;
+let productToAdd: Product ;
 let newCartArray = <CartItem[]>[];
+let productToAddId: Number;
 
 function loadProducts() {
     products = JSON.parse(fs.readFileSync(path.join(__dirname, '/assets/products/products.json'), 'utf8'));
@@ -72,6 +73,54 @@ app.post("/api/shopping-cart", (req, res) => {
             ...newCartArray,
             { product: productToAdd, amount: 1 }
         ];
+    }
+
+
+    res.sendStatus(200);
+});
+
+app.post("/api/increase-shopping-cart", (req, res) => {    
+      if (req.session.cart == undefined) {
+        req.session.cart = <CartItem[]>[];
+    }
+
+    productToAdd = <Product>req.body;
+
+    cartItemToFind = req.session.cart.find(item => item.product.id == productToAdd.id);
+    newCartArray = req.session.cart.filter(
+        item => item.product.id != productToAdd.id);
+
+    if (cartItemToFind != undefined) {
+        cartItemToFind.amount += 1;
+    }
+    else {
+        req.session.cart = <CartItem[]>[
+            ...newCartArray,
+            { product: productToAdd, amount: 1 }
+        ];
+    }
+
+
+    res.sendStatus(200);
+});
+
+app.post("/api/decrease-shopping-cart", (req, res) => {
+      if (req.session.cart == undefined) {
+        req.session.cart = <CartItem[]>[];
+    }
+
+    productToAdd = <Product>req.body;
+
+    cartItemToFind = req.session.cart.find(item => item.product.id == productToAdd.id);
+    newCartArray = req.session.cart.filter(
+        item => item.product.id != productToAdd.id);
+
+    if (cartItemToFind != undefined) {
+        cartItemToFind.amount -= 1;
+        if(cartItemToFind.amount == 0){
+            req.session.cart = <CartItem[]>[
+                ...newCartArray];
+        }
     }
 
 

@@ -12,6 +12,7 @@ export class CartComponent implements OnInit {
 
   public productCart: Array<CartItem> = new Array<CartItem>();
   public products: Array<Product> = new Array<Product>();
+  product: Product;
 
   constructor(private productService: ProductService, private router: Router) { }
 
@@ -26,5 +27,16 @@ export class CartComponent implements OnInit {
   this.router.navigate(['/overview']);
   }
 
+  async increaseAmount(cartItemId){
+    this.product = await this.productService.getProduct(cartItemId);
+    await this.productService.increaseShoppingCartItem(this.product);
+    window.location.reload();
+  }
+
+  async decreaseAmount(cartItemId){
+    this.product = await this.productService.getProduct(cartItemId);
+    await this.productService.decreaseShoppingCartItem(this.product);
+    window.location.reload();
+  }
 
 }
