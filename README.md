@@ -23,5 +23,7 @@ Was muss man tun um ihn verwenden zu können?
 8.Haben sie spass mit meiner Applikation!
 
 
+Bei den Post anfragen wird ein ein Typ zwischen dem Frontend und dem Backend geteilt.
+
 
 Bei fragen melden sie sich an ryfu@gmx.ch
