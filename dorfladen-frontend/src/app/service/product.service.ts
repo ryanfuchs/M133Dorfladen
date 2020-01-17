@@ -39,6 +39,11 @@ export class ProductService {
     await this.http.post('http://localhost:8080/api/decrease-shopping-cart', cartItemID, { responseType: 'text' }).toPromise();
     this.shoppingCartState$.next();
   }
+
+  async submit(user): Promise<void>{
+    await this.http.post('http://localhost:8080/api/submit', user, { responseType: 'text' }).toPromise();
+    this.shoppingCartState$.next();
+  }  
 }
 
 

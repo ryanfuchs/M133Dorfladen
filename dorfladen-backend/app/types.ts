@@ -14,3 +14,9 @@ export type CartItem = {
     product: Product;
     amount: number;
 }
+
+export type  User = {
+    vorname: String;
+    nachname: String;
+    email: String;
+  }

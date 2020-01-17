@@ -2,4 +2,41 @@
   <h1>Dorfladen</h1>
 </header>
 
+<div class="shopping-cart-container">
+  <app-mini-shopping-cart></app-mini-shopping-cart>
+</div>
 
+<table style="width:100%">
+  <tr>
+    <th>
+      Vorname
+    </th>
+    <th>
+      <input type="text" (input)="changedVorname($event)">
+    </th>
+  </tr>
+  <tr>
+    <th>
+      Nachname
+    </th>
+    <th>
+        <input type="text" (input)="changedNachname($event)">
+    </th>
+  </tr>
+  <tr>
+      <th>
+          Email-Adresse
+      </th>
+      <th>
+          <input type="email" (input)="changedEmail($event)">
+      </th>
+  </tr>
+  <tr>
+      <th *ngIf="invalid">
+        Ihre eingaben sind nicht korrekt. Bitte überprüfen sie diese.
+      </th>
+  </tr>
+  <tr>
+      <button (click)="submit()">Einkauf abschliessen</button>
+  </tr>
+</table>

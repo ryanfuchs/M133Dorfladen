@@ -4,7 +4,7 @@ import * as path from "path";
 import * as bodyParser from "body-parser";
 import * as expressSession from "express-session";
 import * as fs from "fs";
-import { Product, CartItem } from "./types";
+import { Product, CartItem, User } from "./types";
 
 const app = express();
 app.use(cors({
@@ -26,6 +26,7 @@ let cartItemToFind: CartItem;
 let productToAdd: Product ;
 let newCartArray = <CartItem[]>[];
 let productToAddId: Number;
+let user: User;
 
 function loadProducts() {
     products = JSON.parse(fs.readFileSync(path.join(__dirname, '/assets/products/products.json'), 'utf8'));
@@ -126,6 +127,22 @@ app.post("/api/decrease-shopping-cart", (req, res) => {
 
 
     res.sendStatus(200);
+});
+
+app.post("/api/submit", (req, res) => {
+ this.user = <User>req.body;
+
+ console.log(this.user);
+
+ if(this.user.email != '' && this.user.nachname != '' && this.user.email != ''){
+    req.session.cart = <CartItem[]>[];
+    res.sendStatus(200);
+ }
+ else{
+     res.sendStatus(403);
+ }
+
+  
 });
 
 /* libs & assets */

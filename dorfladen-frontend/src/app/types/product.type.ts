@@ -1,3 +1,4 @@
+
 export class Product {
   id: number;
   productName: string;
@@ -10,4 +11,10 @@ export class Product {
 export type CartItem = {
   product: Product;
   amount: number;
+}
+
+export type  User = {
+  vorname: String;
+  nachname: String;
+  email: String;
 }
