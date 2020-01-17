@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../types/product.type';
 import { ProductService } from '../../service/product.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
@@ -12,7 +12,7 @@ export class ProductDetailsComponent implements OnInit {
 
   public product: Product;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute,  private router: Router) { }
 
   async ngOnInit() {
     const id = this.route.snapshot.paramMap.get('productId');
@@ -23,4 +23,7 @@ export class ProductDetailsComponent implements OnInit {
     await this.productService.addProductToShoppingCart(this.product);
   }
 
+  openHome(){
+    this.router.navigate(['/overview']);
+    }
 }

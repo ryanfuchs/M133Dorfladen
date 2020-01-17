@@ -22,5 +22,9 @@ export class CartComponent implements OnInit {
     });
   }
 
+  openHome(){
+  this.router.navigate(['/overview']);
+  }
+
 
 }
